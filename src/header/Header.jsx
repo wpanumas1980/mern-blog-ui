@@ -12,7 +12,7 @@ export default function Header() {
         className="headerImg"
         src="https://source.unsplash.com/random"
         alt=""
-      ></img>
+      />
     </div>
   )
 }

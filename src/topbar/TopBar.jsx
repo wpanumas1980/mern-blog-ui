@@ -23,7 +23,7 @@ export default function TopBar() {
         <img
           className="topImg"
           src="https://source.unsplash.com/random"
-          alt="blogPicture"
+          alt=""
         />
         <i className="topSearchIcon fas fa-search" />
       </div>
