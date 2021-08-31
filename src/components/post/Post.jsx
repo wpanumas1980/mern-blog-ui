@@ -1,44 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './post.css';
 
-export default function Post() {
+export default function Post({ post }) {
   return (
     <div className="post">
-      <img
-        src="https://source.unsplash.com/random"
-        alt=""
-        className="postImage"
-      />
+      {post.photo &&
+        <img
+          src={post.photo}
+          alt=""
+          className="postImage"
+        />
+
+      }
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">
-            Music
-          </span>
-          <span className="postCat">
-            Life
-          </span>
+          {post.categories.map(c =>
+            <span className="postCat">
+              {c}
+            </span>
+          )}
         </div>
-        <span className="postTitle">
-          Lorem ipsum dolor sit amet dolore.
-        </span>
+        <Link to={`/post/${post._id}`} className="link">
+          <span className="postTitle">
+            {post.title}
+          </span>
+        </Link>
         <hr />
         <span className="postDate">
-          1 hour ago
+          {new Date(post.createdAt).toDateString()}
         </span>
       </div>
       <div className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Aut beatae quo quod, sequi, quas consequuntur, magni eum 
-        repellendus autem est quis facere? Temporibus voluptatem, 
-        fugiat laudantium sequi illum distinctio non!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Aut beatae quo quod, sequi, quas consequuntur, magni eum 
-        repellendus autem est quis facere? Temporibus voluptatem, 
-        fugiat laudantium sequi illum distinctio non!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Aut beatae quo quod, sequi, quas consequuntur, magni eum 
-        repellendus autem est quis facere? Temporibus voluptatem, 
-        fugiat laudantium sequi illum distinctio non!
+        {post.desc}
       </div>
     </div>
   )
