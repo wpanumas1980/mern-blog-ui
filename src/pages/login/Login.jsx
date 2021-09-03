@@ -7,9 +7,10 @@ import './login.css';
 export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
-  const {user, dispatch, isFetching } = useContext(Context);
+  const {dispatch, isFetching } = useContext(Context);
 
   const handleSubmit = async e => {
+    debugger;
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
@@ -21,9 +22,8 @@ export default function Login() {
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
-  }
+  };
 
-  console.log(user);
   
   return (
     <div className="login">
@@ -43,9 +43,9 @@ export default function Login() {
           placeholder="Enter your password..."
           ref={passwordRef}
         />
-        <button className="loginButton" type="submit">Login</button>
+        <button className="loginButton" type="submit" disabled={isFetching}>Login</button>
       </form>
-      <button className="loginRegisterButton">
+      <button className="loginRegisterButton" >
         <Link to="/register" className="link">
           Register
         </Link>
