@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './singlePost.css';
+import { Context } from '../context/Context';
 
 export default function SinglePost() {
   const { postId } = useParams();
   const [post, setPost] = useState({})
+  const {user} = useContext(Context);
 
   useEffect(() => {
     const getPost = async () => {
@@ -20,17 +22,19 @@ export default function SinglePost() {
       <div className="singlePostWrapper">
         {post.photo &&
           <img
-            src={post.photo}
+            src={`${process.env.REACT_APP_BASE_URL}/images/${post.photo}`}
             alt=""
             className="singlePostImg"
           />
         }
         <h1 className="singlePostTitle">
           {post.title}
-          <div className="singlePostEdit">
-            <i className="singlePostIcon far fa-edit"></i>
-            <i className="singlePostIcon far fa-trash-alt"></i>
-          </div>
+          {post.username === user?.username &&
+            <div className="singlePostEdit">
+              <i className="singlePostIcon far fa-edit"/>
+              <i className="singlePostIcon far fa-trash-alt"/>
+            </div>
+          }
         </h1>
         <div className="singlePostInfo">
           <span>

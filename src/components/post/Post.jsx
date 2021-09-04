@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import './post.css';
 
 export default function Post({ post }) {
+ 
   return (
     <div className="post">
       {post.photo &&
         <img
-          src={post.photo}
+          src={`${process.env.REACT_APP_BASE_URL}/images/${post.photo}`}
           alt=""
           className="postImage"
         />

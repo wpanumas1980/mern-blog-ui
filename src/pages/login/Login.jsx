@@ -10,7 +10,7 @@ export default function Login() {
   const {dispatch, isFetching } = useContext(Context);
 
   const handleSubmit = async e => {
-    debugger;
+    // debugger;
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
