@@ -29,7 +29,7 @@ export default function Settings() {
       updatedUser.profilePic = filename;
       try {
         await axios.post("/upload", data);
-      } catch (err) { }
+      } catch (error) {console.log(error); }
     }
     try {
       const res = await axios.put(`/users/${user._id}`, updatedUser);
@@ -51,7 +51,7 @@ export default function Settings() {
           <label>Profile Picture</label>
           <div className="settingsPP">
             <img
-              src={file? URL.createObjectURL(file) : user.profilePic}
+              src={file ? URL.createObjectURL(file) : `${process.env.REACT_APP_BASE_URL}/images/${user.profilePic}`}
               alt=""
             />
             <label htmlFor="fileInput">
@@ -73,11 +73,11 @@ export default function Settings() {
             onChange={e => setUsername(e.target.value)}
           />
           <label>Email</label>
-          <input 
-          type="email" 
-          placeholder={user.email} 
-          name="email" 
-          onChange={e => setEmail(e.target.value)}
+          <input
+            type="email"
+            placeholder={user.email}
+            name="email"
+            onChange={e => setEmail(e.target.value)}
           />
           <label>Password</label>
           <input
@@ -89,7 +89,7 @@ export default function Settings() {
           <button className="settingsSubmitButton" type="submit">
             Update
           </button>
-          {success&&<span style={{color:'green',textAlign:'center',marginTop:'20px'}}>Profile has been updated...</span> }
+          {success && <span style={{ color: 'green', textAlign: 'center', marginTop: '20px' }}>Profile has been updated...</span>}
         </form>
       </div>
       <Sidebar />

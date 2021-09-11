@@ -52,7 +52,7 @@ export default function TopBar() {
             <Link to='/settings'>
               <img
                 className="topImg"
-                src={user.profilePic}
+                src={`${process.env.REACT_APP_BASE_URL}/images/${user.profilePic}`}
                 alt=""
               />
             </Link>
