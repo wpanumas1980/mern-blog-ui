@@ -1,16 +1,19 @@
 import React from 'react';
 import './post.css';
 
-export default function Post() {
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+export default function Post({post}) {
+  console.log('post =>', post);
   return (
     <div className="post">
       <img
-        src="https://source.unsplash.com/random"
+        src={`${BASE_URL}${post.image.url}`}
         alt=""
         className="postImage"
       />
       <div className="postInfo">
-        <div className="postCats">
+        {/* <div className="postCats">
           <span className="postCat">
             Music
           </span>
@@ -20,25 +23,18 @@ export default function Post() {
         </div>
         <span className="postTitle">
           Lorem ipsum dolor sit amet dolore.
-        </span>
+        </span> */}
         <hr />
         <span className="postDate">
-          1 hour ago
+          {new Date(post.created_at).toDateString()}
         </span>
       </div>
       <div className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Aut beatae quo quod, sequi, quas consequuntur, magni eum 
-        repellendus autem est quis facere? Temporibus voluptatem, 
-        fugiat laudantium sequi illum distinctio non!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Aut beatae quo quod, sequi, quas consequuntur, magni eum 
-        repellendus autem est quis facere? Temporibus voluptatem, 
-        fugiat laudantium sequi illum distinctio non!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Aut beatae quo quod, sequi, quas consequuntur, magni eum 
-        repellendus autem est quis facere? Temporibus voluptatem, 
-        fugiat laudantium sequi illum distinctio non!
+       {post.description}
+      </div>
+      <div>
+        <i className="far fa-thumbs-up" />
+        <span style={{marginLeft:5}}>{post.likes}</span>
       </div>
     </div>
   )
