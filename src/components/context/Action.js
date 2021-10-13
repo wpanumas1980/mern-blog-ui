@@ -3,7 +3,8 @@ export const LoginStart = (userCredentials) => ({
 });
 
 export const LoginSuccess = (user) => ({
-    type: "LOGIN_SUCCESS"
+    type: "LOGIN_SUCCESS",
+    payload:user
 });
 
 export const LoginFailure = () => ({
@@ -15,11 +16,13 @@ export const Logout = () => ({
 });
 
 export const UpdateStart = (userCredentials) => ({
-    type: "UPDATE_START"
+    type: "UPDATE_START",
+    payload:userCredentials
 });
 
 export const UpdateSuccess = (user) => ({
-    type: "UPDATE_SUCCESS"
+    type: "UPDATE_SUCCESS",
+    payload:user
 });
 
 export const UpdateFailure = () => ({

@@ -26,7 +26,6 @@ export default function Login() {
     }
   };
 
-  
   return (
     <div className="login">
       <span className="loginTitle">Login</span>

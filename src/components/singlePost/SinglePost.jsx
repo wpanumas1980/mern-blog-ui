@@ -20,7 +20,7 @@ export default function SinglePost() {
       setLoading(false)
     }
     getPost();
-  }, []);
+  }, [postId]);
 
   if (loading) {
     return <p>Loading...</p>
