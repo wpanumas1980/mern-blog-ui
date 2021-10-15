@@ -22,7 +22,7 @@ export default function Home() {
     fetchPost();
   }, [search]);
 
-  // console.log(posts);
+  console.log(posts);
   return (
     <>
       <Header />

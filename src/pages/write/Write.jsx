@@ -13,50 +13,36 @@ export default function Write() {
 
   const handleUpload = e => {
 
-    const formData = new FormData();
-    formData.append('files', e.target.files[0]);
-    axios
-      .post(`${BASE_URL}/upload`, formData)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    console.log('files =>', e.target.files[0]);
+    setFile(e.target.files[0])
+
+    // const formData = new FormData();
+    // formData.append('files', e.target.files[0]);
+    // axios
+    //   .post(`${BASE_URL}/upload`, formData)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }
 
   const handleSubmit = async e => {
     e.preventDefault();
-    // const author = user.user.id;
-    // const aut = [3,5];
     const categories = [3, 5];
     const newPost = {
       title,
       description,
-      categories
-      // author
+      categories,
+      author:3
     };
 
     const formData = new FormData();
-    formData.append('data', newPost);
     formData.append('files.image', file);
-
-
-    // if (file) {
-    //   const data = FormData();
-    //   const filename = Date.now() + file.name;
-    //   data.append("name", filename);
-    //   data.append("file", file);
-    //   newPost.image = filename;
-    //   try {
-
-    //   } catch (error) {
-
-    //   }
-    // }
-    // console.log('newPost: ', formData);
+    formData.append('data',JSON.stringify(newPost));
     const res = await axios.post(`${BASE_URL}/posts`, formData);
-    console.log('res =>', res);
+    // console.log('res =>', res);
   }
   // console.log('User: ', user);
   return (

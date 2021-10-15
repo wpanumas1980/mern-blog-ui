@@ -8,11 +8,11 @@ export default function Post({ post }) {
   // console.log('post =>', post);
   return (
     <div className="post">
-      <img
+      {post.image && <img
         src={`${BASE_URL}${post.image.url}`}
         alt=""
         className="postImage"
-      />
+      />}
       <div className="postInfo">
         <div className="postCats">
           {post.categories.map(cat =>
@@ -40,11 +40,15 @@ export default function Post({ post }) {
           <span style={{ marginLeft: 5 }}>{post.likes}</span>
         </div>
         <p>Author:
+          {post.author?
           <Link to={`/?author.username=${post.author.username}`} className="link">
-          <span>
-            {post.author.username}
-          </span>
+            <span>
+              {post.author.username}
+            </span>
           </Link>
+          :
+          "-"
+          }
         </p>
       </div>
     </div>
